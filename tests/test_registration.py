@@ -9,13 +9,19 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 @pytest.fixture
 def driver():
+    from selenium.webdriver.chrome.options import Options
+
+    options = Options()
+    options.add_argument("--headless=new")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--no-sandbox")
+
     browser = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install())
+        service=Service(ChromeDriverManager().install()),
+        options=options
     )
-    browser.get("http://127.0.0.1:5000")
     yield browser
     browser.quit()
-
 
 def check_alert(driver, expected):
     alert = WebDriverWait(driver, 5).until(
