@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registration-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: registration-app
+  template:
+    metadata:
+      labels:
+        app: registration-app
+    spec:
+      containers:
+        - name: registration-app
+          image: deepika09052005/week12:latest
+          ports:
+            - containerPort: 5000
