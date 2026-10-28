@@ -3,13 +3,13 @@ pipeline {
 
     stages {
         stage('Test') {
-            steps {
-                bat 'python -m pip install -r requirements.txt'
-                bat 'start /B python app.py'
-                bat 'ping 127.0.0.1 -n 5 > nul'
-                bat 'python -m pytest -v tests/test_registration.py'
-            }
-        }
+    steps {
+        bat '"C:\\Users\\kassl\\AppData\\Local\\Python\\bin\\python.exe" -m pip install -r requirements.txt'
+        bat 'start /B "" "C:\\Users\\kassl\\AppData\\Local\\Python\\bin\\python.exe" app.py'
+        bat 'ping 127.0.0.1 -n 5 > nul'
+        bat '"C:\\Users\\kassl\\AppData\\Local\\Python\\bin\\python.exe" -m pytest -v tests/test_registration.py'
+    }
+}
 
         stage('Build') {
             steps {
